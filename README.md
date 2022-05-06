@@ -66,6 +66,22 @@ don't have it installed, RouterProxy will still work).
 
 These modules have several dependencies of their own, so make sure they are installed as well.
 
+## Building RPM
+RockyLinux8:
+```bash
+# To build the RPM
+dnf install -y rpm-build tar git make perl-ExtUtils-MakeMaker perl-CPAN gcc
+
+# To install the RPM
+dnf install -y dnf-plugins-core epel
+dnf config-manager --set-enabled powertools
+cpan App::cpanminus #(If first use, say yes to auto config, then run again when finished)
+cpanm CGI::Ajax GRNOC::Config
+# Comment out those lines
+# Make the RPM
+# Fix locations (if needed?) for webserver
+```
+
 ## Docker
 RouterProxy may be run via Docker, but you'll need to build the container yourself.
 ```bash
